@@ -1,14 +1,14 @@
 {
   "name": "baoart",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A minimal Node.js server using Express and Mustache templates to display artwork data from an external API.",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Love Dager",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.7",
