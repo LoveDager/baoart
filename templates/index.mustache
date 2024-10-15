@@ -1,14 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Artworks</title>
+    <meta charset="UTF-8">
+    <title>Art Togather — Our small collection of art that we've gathered, together</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    
+    <style>
+        /* a simple reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* set the background color to a light grey */
+        body {
+            background-color: #e2e2e2;
+            margin: 0;
+            padding: 1rem;
+            font-family: 'Afacad Flux', sans-serif;
+            font-weight: 300;
+        }
+
+        /* set font weight for all elements */
+        h1 {
+            font-weight: 700;
+            font-size: 4rem;
+            color: #1C1AAF;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+
+        /* a grid with 2 columns and plenty of spacing */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0rem;
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-item-info {
+            margin-top: 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin: 8rem 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Artworks</h1>
-    <ul>
-    {{#artworks}}
-        <li><a href="/{{ID}}">{{Name}}</a></li>
-    {{/artworks}}
-    </ul>
-</body>
+    <header>
+        <h1>Art to Gather</h1>
+        <h2>Our small collection of art that we've gathered, together</h2>
+    </header>
+
+    <div class="gallery">
+        {{#artworks}}
+        <div class="gallery-item">
+            <a href="/{{ID}}">
+                <img src="{{Image1}}" alt="{{ArtworkTitle}} by {{Artist}}">
+            </a>
+        </div>
+        {{/artworks}}
+    </div>
 </html>

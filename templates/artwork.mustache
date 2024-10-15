@@ -1,12 +1,140 @@
+<!-- a html page, complete with styling, displaying a gallery with art in a grid with each piece having a title and an art ID as well as a photo of the art. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{artwork.Name}}</title>
+    <meta charset="UTF-8">
+    <title>{{artwork.ArtworkTitle}} by {{artwork.Artist}} — Art Togather</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+
+    <!-- tags for proper zoom on smart phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* a simple reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* set the background color to a light grey */
+        body {
+            background-color: #e2e2e2;
+            margin: 0;
+            padding: 1rem;
+            font-family: 'Afacad Flux', sans-serif;
+            font-weight: 300;
+        }
+
+        /* set font weight for all elements */
+        h1 {
+            font-weight: 700;
+            font-size: 4rem;
+            color: #1C1AAF;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        /* display all artwork in a row 60% of the viewframe in height, all photos should be this height and max width for each photo is 80% of the viewframe */
+        /* the photos should be side-scrollable and not shrink */
+        .artwork {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            height: 60vh;
+        }
+
+        .artwork-item {
+            flex: 0 0 auto;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .artwork-item img {
+            max-width: 80vh;
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+        /* a div called "description" with the artwork's name, artist, and art ID */
+        .description {
+            max-width: 800px;
+        }
+
+        .description h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1C1AAF;
+        }
+
+        .description p {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .goback {
+            padding: 1rem;
+            color:#1C1AAF;
+        }
+
+        .goback a {
+            text-decoration: none;
+            color: #1C1AAF;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>{{artwork.Name}}</h1>
-    <p>Artist: {{artwork.Artist}}</p>
-    <p>Description: {{artwork.Description}}</p>
-    <a href="/">Back to list</a>
+    <div class="description">
+        <h4>#{{artwork.ID}}</h4>
+        <h3>{{artwork.ArtworkTitle}}</h3>
+        <span>by <em>{{artwork.Artist}}</em>&nbsp;&middot;&nbsp;{{artwork.YearMade}}<br />{{artwork.CollectionNote}}</span>
+        <p>{{artwork.ShortDescription}}</p>
+    </div>
+
+    <!-- a div called "artwork" with photos of the artwork in separate divs, all of the same row, filling out at most 80% of viewframe width or height per photo, and side-scrollable -->
+    <div class="artwork">
+        {{#artwork.Image1}}
+        <div class="artwork-item">
+            <img src="{{artwork.Image1}}" alt="Photo 1 of {{artwork.ArtworkTitle}} by {{artwork.Artist}}">
+        </div>
+        {{/artwork.Image1}}
+        {{#artwork.Image2}}
+        <div class="artwork-item">
+            <img src="{{artwork.Image2}}" alt="Photo 2 of {{artwork.ArtworkTitle}} by {{artwork.Artist}}">
+        </div>
+        {{/artwork.Image2}}
+        {{#artwork.Image3}}
+        <div class="artwork-item">
+            <img src="{{artwork.Image3}}" alt="Photo 3 of {{artwork.ArtworkTitle}} by {{artwork.Artist}}">
+        </div>
+        {{/artwork.Image3}}
+        {{#artwork.Image4}}
+        <div class="artwork-item">
+            <img src="{{artwork.Image4}}" alt="Photo 4 of {{artwork.ArtworkTitle}} by {{artwork.Artist}}">
+        </div>
+        {{/artwork.Image4}}
+        {{#artwork.Image5}}
+        <div class="artwork-item">
+            <img src="{{artwork.Image5}}" alt="Photo 5 of {{artwork.ArtworkTitle}} by {{artwork.Artist}}">
+        </div>
+        {{/artwork.Image5}}
+        {{#artwork.Image6}}
+        <div class="artwork-item">
+            <img src="{{artwork.Image6}}" alt="Photo 6 of {{artwork.ArtworkTitle}} by {{artwork.Artist}}">
+        </div>
+        {{/artwork.Image6}}     
+    </div>
+
+    <nav class="goback">
+        <a href="/">&larr; view all art</a>
+    </nav>
 </body>
 </html>
