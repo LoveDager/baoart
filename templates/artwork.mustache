@@ -95,7 +95,20 @@
     <div class="description">
         <h4>#{{artwork.ID}}</h4>
         <h3>{{artwork.ArtworkTitle}}</h3>
-        <span>by <em>{{artwork.Artist}}</em>&nbsp;&middot;&nbsp;{{artwork.YearMade}}<br />{{artwork.ArtworkMethod}}<br />{{artwork.CollectionNote}}</span>
+        <span>
+            {{#artwork.Artist}}
+                by <em>{{artwork.Artist}}</em>
+            {{/artwork.Artist}}
+            {{#artwork.YearMade}}
+                &nbsp;&middot;&nbsp;{{artwork.YearMade}}
+            {{/artwork.YearMade}}
+            {{#artwork.ArtworkMethod}}
+                <br />{{artwork.ArtworkMethod}}
+            {{/artwork.ArtworkMethod}}
+            {{#artwork.CollectionNote}}
+                <br />{{artwork.CollectionNote}}
+            {{/artwork.CollectionNote}}
+        </span>
         <p>{{artwork.ShortDescription}}</p>
     </div>
 
